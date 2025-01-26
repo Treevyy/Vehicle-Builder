@@ -44,7 +44,7 @@ class Cli {
           }),
         },
       ])
-      .then((answers) => {
+      .then((answers: { selectedVehicleVin: string }) => {
         // set the selectedVehicleVin to the vin of the selected vehicle
         this.selectedVehicleVin = answers.selectedVehicleVin;
         // perform actions on the selected vehicle
@@ -78,7 +78,6 @@ class Cli {
         }
       });
   }
-
   // method to create a car
   createCar(): void {
     inquirer
@@ -258,13 +257,13 @@ class Cli {
           Cli.generateVin(),
           answers.color,
           answers.make,
-          answers.model
+          answers.model,
           parseInt(answers.year),
           parseInt(answers.weight),
-          parseInt(answers.topspeed),
+          parseInt(answers.topSpeed),
           new Wheel(parseInt(answers.frontWheelDiameter), answers.frontWheelBrand),
           new Wheel(parseInt(answers.rearWheelDiameter), answers.rearWheelBrand)
-        )
+        );
         // TODO: push the motorbike to the vehicles array
         this.vehicles.push(motorbike);
         // TODO: set the selectedVehicleVin to the vin of the motorbike
@@ -395,13 +394,13 @@ class Cli {
         else if (answers.action === 'Tow a vehicle') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicle[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Truck) {
-              this.vehicleToTow(this.vehicle[i]);
+              this.findVehicleToTow(this.vehicle[i]);
               return;
             }
           }
         }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
-        else if (answers.action === 'Preform a wheelie') {
+        else if (answers.action === 'perform a wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicle[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
               this.vehicle[i].performWheelie();
@@ -444,7 +443,5 @@ class Cli {
         }
       });
   }
-}
-
 // export the Cli class
 export default Cli;
