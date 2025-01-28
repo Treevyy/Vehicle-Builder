@@ -13,12 +13,10 @@ class Cli {
   vehicles: (Car | Truck | Motorbike)[];
   selectedVehicleVin: string | undefined;
   exit: boolean = false;
-
   // TODO: Update the constructor to accept Truck and Motorbike objects as well
   constructor(vehicles: (Car | Truck | Motorbike)[]) {
     this.vehicles = vehicles;
   }
-
   // static method to generate a vin
   static generateVin(): string {
     // return a random string
@@ -51,6 +49,7 @@ class Cli {
         this.performActions();
       });
     }
+
   // method to create a vehicle
   createVehicle(): void {
     inquirer
@@ -76,6 +75,7 @@ class Cli {
         }
       });
       }
+
   // method to create a car
   createCar(): void {
     inquirer
@@ -303,7 +303,7 @@ class Cli {
         }
       });
   }
-
+  
   // method to perform actions on a vehicle
   performActions(): void {
     inquirer
@@ -398,10 +398,10 @@ class Cli {
           }
         }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
-        else if (answers.action === 'perform a wheelie') {
+        else if (answers.action === 'Pop a wheelie') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
-              (this.vehicles[i] as Motorbike).performWheelie();
+              (this.vehicles[i] as Motorbike).wheelie();
             }
           }
         }
@@ -419,7 +419,6 @@ class Cli {
         }
       });
   }
-
   // method to start the cli
   startCli(): void {
     inquirer
