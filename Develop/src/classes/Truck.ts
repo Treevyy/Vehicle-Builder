@@ -17,9 +17,8 @@ class Truck extends Vehicle implements AbleToTow {
   year: number;
   weight: number;
   topSpeed: number;
-  wheels: Wheel[];
   towingCapacity: number;
-
+  wheels: Wheel[];
   // TODO: Create a constructor that accepts the properties of the Truck class
   constructor(
     vin: string,
@@ -29,8 +28,8 @@ class Truck extends Vehicle implements AbleToTow {
     year: number,
     weight: number,
     topSpeed: number,
+    towingCapacity: number,
     wheels: Wheel[],
-    towingCapacity: number
   ) {
     // TODO: The constructor should call the constructor of the parent class, Vehicle
     super();
@@ -58,7 +57,7 @@ class Truck extends Vehicle implements AbleToTow {
     // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
     if (vehicle.weight <= this.towingCapacity) {
     // TODO: If it is, log that the vehicle is being towed
-      console.log(`towing ${make} ${model}`);
+      console.log(`Towing ${make} ${model}`);
     }
     // TODO: If it is not, log that the vehicle is too heavy to be towed
       else {
