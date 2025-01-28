@@ -303,7 +303,7 @@ class Cli {
         }
       });
   }
-  
+
   // method to perform actions on a vehicle
   performActions(): void {
     inquirer
@@ -398,7 +398,7 @@ class Cli {
           }
         }
         // TODO: add statements to perform the wheelie action only if the selected vehicle is a motorbike
-        else if (answers.action === 'Pop a wheelie') {
+        else if (answers.action === 'Popped a wheelie!') {
           for (let i = 0; i < this.vehicles.length; i++) {
             if (this.vehicles[i].vin === this.selectedVehicleVin && this.vehicles[i] instanceof Motorbike) {
               (this.vehicles[i] as Motorbike).wheelie();
